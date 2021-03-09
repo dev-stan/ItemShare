@@ -54,6 +54,7 @@ public class MainCommand implements CommandExecutor {
 	public static void itemCommand(Player player) {
 		
 		ItemStack inHand = player.getInventory().getItemInMainHand();
+		Map<Enchantment, Integer> enchantments = inHand.getItemMeta().getEnchants();
 		
 		if (inHand.getItemMeta().hasDisplayName() && inHand.getItemMeta().hasEnchants()) {
 				
@@ -62,7 +63,6 @@ public class MainCommand implements CommandExecutor {
 			Bukkit.broadcastMessage(ChatColor.WHITE + "Item: " + ChatColor.RESET + StringUtils.capitalize(inHand.getItemMeta().getDisplayName()));
 			Bukkit.broadcastMessage(ChatColor.WHITE + "Enchantments: ");
 			
-			Map<Enchantment, Integer> enchantments = inHand.getItemMeta().getEnchants();
 			for (Enchantment enchantment : enchantments.keySet()) {
 					
 				String nameAndLevel = ChatColor.WHITE + "- " + ChatColor.YELLOW + enchantment.getKey().getKey().replace("_", " ") + " " +  enchantments.get(enchantment);
@@ -76,7 +76,6 @@ public class MainCommand implements CommandExecutor {
 			Bukkit.broadcastMessage(ChatColor.WHITE + "Item: " + ChatColor.YELLOW + StringUtils.capitalize(inHand.getType().name().toLowerCase()).replace("_", " "));
 			Bukkit.broadcastMessage(ChatColor.WHITE + "Enchantments: ");
 				
-			Map<Enchantment, Integer> enchantments = inHand.getItemMeta().getEnchants();
 			for (Enchantment enchantment : enchantments.keySet()) {
 					
 				String nameAndLevel = ChatColor.WHITE + "- " + ChatColor.YELLOW + enchantment.getKey().getKey().replace("_", " ") + " " +  enchantments.get(enchantment);
